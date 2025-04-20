@@ -1,4 +1,4 @@
-# Paws Relocate - Pet Relocation For Wordpress Plugin
+# Paws Relocate - Pet Relocation Form Wordpress Plugin
 
 **Version:** 1.0.0  
 **Author:** [Choyon](https://github.com/choyon-dev)  
