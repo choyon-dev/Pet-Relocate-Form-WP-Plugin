@@ -1,0 +1,482 @@
+/*--------------------------------------------------------------
+# Paws Relocate Multi-Step Form Styles
+Dev:  Fajle Rabbi Choyon
+--------------------------------------------------------------*/
+
+:root {
+    --pr-primary-color: #17A2B8; 
+    --pr-primary-darker: #138496; 
+    --pr-light-bg: #F8FAFBF; 
+    --pr-container-bg: #FFFFFF; 
+    --pr-indicator-inactive-bg: #EEF2F4; 
+    --pr-border-color: #E0E0E0; 
+    --pr-input-border: #CED4DA; 
+    --pr-text-color: #495057; 
+    --pr-label-color: #343A40; 
+    --pr-placeholder-color: #adb5bd; 
+    --pr-secondary-text: #6c757d; 
+    --pr-secondary-darker: #5a6268; 
+    --pr-required-color: #dc3545; 
+    --pr-success-bg: #d4edda;
+    --pr-success-text: #155724;
+    --pr-success-border: #c3e6cb;
+    --pr-error-bg: #f8d7da;
+    --pr-error-text: #721c24;
+    --pr-error-border: #f5c6cb;
+    --pr-border-radius: 8px; 
+}
+
+/* --- General Container --- */
+#pr-multi-step-form-container {
+    background-color: var(--pr-light-bg);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px; 
+    border-radius: var(--pr-border-radius);
+    position: relative; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Step Indicators --- */
+.pr-step-indicators {
+    display: flex;
+    margin-bottom: 30px;
+    border-radius: var(--pr-border-radius);
+    overflow: hidden;
+    border: 1px solid var(--pr-border-color);
+    background-color: var(--pr-indicator-inactive-bg);
+}
+
+.pr-indicator {
+    flex: 1;
+    padding: 15px 10px;
+    text-align: center;
+    color: var(--pr-secondary-text);
+    border-right: 1px solid var(--pr-border-color);
+    font-size: 0.9em;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: default; 
+}
+.pr-indicator:last-child {
+    border-right: none;
+}
+
+.pr-indicator span {
+    display: block;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    color: var(--pr-secondary-text); 
+    text-transform: uppercase;
+}
+
+.pr-indicator.active {
+    background-color: var(--pr-container-bg);
+    color: var(--pr-primary-color);
+    border-bottom: 3px solid var(--pr-primary-color);
+    font-weight: bold;
+}
+
+.pr-indicator.active span {
+     color: var(--pr-primary-color);
+}
+
+
+/* --- Form Steps --- */
+.pr-form-step {
+    display: none; 
+    animation: fadeIn 0.5s ease-in-out;
+    background-color: var(--pr-container-bg);
+    padding: 25px;
+    border-radius: var(--pr-border-radius);
+    border: 1px solid var(--pr-border-color);
+}
+
+.pr-form-step.active {
+    display: block; 
+}
+
+/* --- Fieldsets and Legends --- */
+.pr-fieldset-main,
+.pr-fieldset-petinfo {
+    border: none; 
+    padding: 0; 
+    margin: 0 0 25px 0; 
+}
+.pr-fieldset-petinfo {
+     border: 1px solid var(--pr-border-color);
+     border-radius: var(--pr-border-radius);
+     padding: 20px;
+     background-color: var(--pr-container-bg); 
+     margin-top: 20px;
+}
+
+
+.pr-fieldset-petinfo legend {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--pr-label-color);
+    padding: 0 10px;
+    margin-left: 10px;
+    background-color: var(--pr-container-bg); 
+    line-height: 1;
+}
+
+.pr-location-section,
+.pr-additional-info-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--pr-border-color);
+}
+.pr-location-section h3,
+.pr-additional-info-section h3 {
+    font-size: 1.2em;
+    color: var(--pr-label-color);
+    margin-bottom: 15px;
+}
+
+/* --- Form Rows & Grid Layouts --- */
+.pr-form-row {
+    margin-bottom: 18px; 
+}
+.pr-form-row:last-child {
+    margin-bottom: 0;
+}
+.pr-form-row-full {
+     grid-column: 1 / -1; 
+}
+
+.pr-form-grid {
+    display: grid;
+    gap: 18px 25px; 
+    margin-bottom: 18px;
+}
+.pr-grid-two-col {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Default 2 col */
+}
+.pr-grid-three-col {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Default 3 col */
+}
+
+
+/* --- Labels and Inputs --- */
+#pr-multi-step-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: var(--pr-label-color);
+    font-size: 0.95em;
+}
+
+#pr-multi-step-form input[type="text"],
+#pr-multi-step-form input[type="email"],
+#pr-multi-step-form input[type="tel"],
+#pr-multi-step-form input[type="date"],
+#pr-multi-step-form input[type="number"],
+#pr-multi-step-form textarea,
+#pr-multi-step-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--pr-input-border);
+    border-radius: var(--pr-border-radius);
+    box-sizing: border-box;
+    background-color: var(--pr-container-bg);
+    color: var(--pr-text-color);
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+#pr-multi-step-form input[type="date"] {
+    line-height: normal;
+}
+
+#pr-multi-step-form select {
+     appearance: none; 
+     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+     background-repeat: no-repeat;
+     background-position: right 12px center;
+     background-size: 16px 12px;
+     padding-right: 40px; 
+}
+
+
+#pr-multi-step-form input:focus,
+#pr-multi-step-form textarea:focus,
+#pr-multi-step-form select:focus {
+    border-color: var(--pr-primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(23, 162, 184, 0.2); 
+}
+
+/* --- Radio Buttons & Checkboxes --- */
+.pr-radio-group label:first-of-type,
+.pr-checkbox-group label:first-of-type { 
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.pr-radio-option,
+.pr-checkbox-option {
+    display: inline-flex; 
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 8px; 
+    cursor: pointer;
+}
+.pr-radio-option input[type="radio"],
+.pr-checkbox-option input[type="checkbox"] {
+    margin-right: 8px;
+    flex-shrink: 0; 
+    cursor: pointer;
+    width: 16px; 
+    height: 16px;
+    
+}
+.pr-radio-option label,
+.pr-checkbox-option label {
+    font-weight: normal; 
+    display: inline; 
+    vertical-align: middle;
+    color: var(--pr-text-color);
+    margin-bottom: 0; 
+    cursor: pointer;
+}
+
+
+/* --- Placeholders --- */
+::placeholder { 
+  color: var(--pr-placeholder-color);
+  opacity: 1;
+}
+:-ms-input-placeholder { 
+  color: var(--pr-placeholder-color);
+}
+::-ms-input-placeholder { 
+  color: var(--pr-placeholder-color);
+}
+
+
+/* --- Required Fields --- */
+label span.required {
+    color: var(--pr-required-color);
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+/* --- Validation Error Styling --- */
+#pr-multi-step-form input.error,
+#pr-multi-step-form textarea.error,
+#pr-multi-step-form select.error {
+  border-color: var(--pr-error-border) !important; 
+  background-color: #fff9f9;
+}
+.pr-radio-group.error label:first-of-type { 
+    color: var(--pr-error-text);
+}
+
+
+/* --- Buttons --- */
+.pr-navigation-buttons {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--pr-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pr-prev-btn,
+.pr-next-btn,
+.pr-submit-btn {
+    padding: 10px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: var(--pr-border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    text-align: center;
+}
+
+.pr-next-btn,
+.pr-submit-btn {
+    background-color: var(--pr-primary-color);
+    color: #ffffff;
+}
+.pr-next-btn:hover,
+.pr-submit-btn:hover {
+     background-color: var(--pr-primary-darker);
+}
+
+.pr-prev-btn {
+    background-color: #f8f9fa; 
+    color: var(--pr-secondary-text);
+    border: 1px solid var(--pr-input-border); 
+}
+.pr-prev-btn:hover:not(:disabled) {
+    background-color: #e9ecef;
+    color: var(--pr-secondary-darker);
+}
+
+/* Disabled State */
+.pr-prev-btn:disabled,
+.pr-next-btn:disabled,
+.pr-submit-btn:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.pr-prev-btn:disabled {
+    border-color: #e9ecef;
+}
+
+
+/* --- Status Messages --- */
+.pr-form-status {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: var(--pr-border-radius);
+    display: none;
+    border: 1px solid transparent;
+}
+.pr-form-status.success {
+    background-color: var(--pr-success-bg);
+    color: var(--pr-success-text);
+    border-color: var(--pr-success-border);
+    display: block;
+}
+.pr-form-status.error {
+    background-color: var(--pr-error-bg);
+    color: var(--pr-error-text);
+    border-color: var(--pr-error-border);
+    display: block;
+}
+.pr-form-status ul {
+    margin: 5px 0 0 0;
+    padding-left: 20px;
+    font-size: 0.9em;
+}
+.pr-form-status p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+/* --- Loading Indicator --- */
+.pr-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85); 
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--pr-primary-color);
+    font-size: 1.1em;
+    border-radius: var(--pr-border-radius); 
+    display: none; 
+}
+.pr-loading-overlay::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    border: 3px solid rgba(23, 162, 184, 0.2);
+    border-radius: 50%;
+    border-top-color: var(--pr-primary-color);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --- Conditional Field Styling --- */
+.pr-conditional-field.hidden {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border: none;
+    transition: all 0.3s ease-out;
+}
+.pr-conditional-field {
+     transition: all 0.3s ease-in;
+}
+
+/* --- Helper Classes --- */
+.pr-screen-reader-text { 
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+small {
+    font-size: 0.85em;
+    color: var(--pr-secondary-text);
+    display: block;
+    margin-top: 5px;
+}
+
+/* --- Fade Animation --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .pr-form-grid.pr-grid-two-col,
+    .pr-form-grid.pr-grid-three-col {
+        grid-template-columns: 1fr; 
+    }
+     .pr-step-indicators {
+        font-size: 0.8em; 
+    }
+    .pr-indicator {
+        padding: 10px 5px;
+    }
+    .pr-indicator span {
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 600px) {
+     .pr-navigation-buttons {
+        flex-direction: column-reverse; 
+    }
+     .pr-navigation-buttons button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+     .pr-navigation-buttons button:last-child {
+        margin-bottom: 0;
+    }
+     .pr-form-step {
+        padding: 15px; 
+    }
+    .pr-fieldset-petinfo {
+         padding: 15px;
+    }
+     #pr-multi-step-form-container {
+        padding: 10px;
+     }
+     .pr-radio-option {
+         margin-right: 15px; 
+     }
+}
+
+/* --- Popup Style From Here --- */
+
